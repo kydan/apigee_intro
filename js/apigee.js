@@ -58,13 +58,13 @@ var Usergrid = (function(){
     this._callTimeout =  options.callTimeout || 30000; //default to 30 seconds
     this._callTimeoutCallback =  options.callTimeoutCallback || null;
     this.logoutCallback =  options.logoutCallback || null;
-  
+
     //Init app monitoring.
     if (this.monitoringEnabled) {
       try{
         this.monitor = new Apigee.MonitoringClient(options);
       }catch(e){
-        console.log(e); 
+        console.log(e);
       }
     }
   };
@@ -2543,7 +2543,7 @@ var Apigee = (function(){
       this.configuration = null;
       this.downloadConfig();
     }
-    
+
     //Don't do anything if configuration wasn't loaded.
     if((this.configuration !== null) && (this.configuration !== "undefined")) {
 
@@ -2623,7 +2623,7 @@ var Apigee = (function(){
   Apigee.MonitoringClient.prototype.downloadConfig = function(callback){
     var configRequest = new XMLHttpRequest();
     var path = this.URI + '/' + this.orgName + '/' + this.appName + '/apm/apigeeMobileConfig';
-  
+
     //If we have a function lets load the config async else do it sync.
     if(typeof callback === "function") {
       configRequest.open(VERBS.get, path, true);
@@ -2637,7 +2637,7 @@ var Apigee = (function(){
     configRequest.setRequestHeader("Content-Type","application/json");
     configRequest.onreadystatechange = onReadyStateChange;
     configRequest.send();
-  
+
     //A little async magic. Let's return the AJAX issue from downloading the configs.
     //Or we can return the parsed out config.
     function onReadyStateChange() {
